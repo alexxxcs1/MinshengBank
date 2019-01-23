@@ -5,4 +5,15 @@
     max-width: 750px;
     margin: 0 auto;
     height: 100%;
+    position: relative;
+    .logo{
+        width: 367px;
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        // filter: drop-shadow(#fff 0 0 5px);
+        // background: rgba($color: #fff, $alpha: 0.6);
+        border-radius: 10px;
+        z-index: 98;
+    }
 }

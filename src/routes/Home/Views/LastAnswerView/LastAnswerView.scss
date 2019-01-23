@@ -1,0 +1,209 @@
+.ViewBox{
+    width: 100%;
+    height: 100%;
+}
+.TopGround{
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    z-index: 0;
+    img{
+        display: block;
+        width: 100%;
+    }
+}
+
+.DetialBox{
+    position: relative;
+    bottom: 0px;
+    z-index: 3;
+    
+    .MainTitle{
+        width:100%;
+        margin-top: 80px;
+        img{
+            width: 100%;
+            animation: scaleInTitle 0.5s forwards;
+        }
+    }
+    .ReaderBox{
+        width: 750px;
+        height: 0px;
+        position: relative;
+        z-index: 9;
+        .reader{
+            width: 111px;
+            margin-right: 50px;
+            margin-bottom: 20px;
+            animation: readIn 0.6s 1s backwards;
+        }
+        @keyframes readIn {
+            0%{
+                transform: scale(0)
+            }
+            100%{
+                transform: scale(1)
+            }
+        }
+    }
+    .AnswerOutBox{
+        width: 698px;
+        height: calc(686px);
+        overflow: hidden;
+        .AnswerBox{
+            width: 100%;
+            height: 593px;
+            border-radius: 9px;
+            margin-top: 93px;
+            background: #502f83;
+            background:linear-gradient(-45deg,
+            rgba(103,79,150,1) 25%,#502f83 0,#502f83 50%,
+            rgba(103,79,150,1) 0,rgba(103,79,150,1) 75%,#502f83 0);
+        background-size: 20px 20px;            
+            position: relative;
+            .AnswerContent{
+                width: 628px;
+                height: 676px;
+                background: #fff;
+                position: absolute;
+                left: 50%;
+                bottom: 0px;
+                transform: translateX(-50%);
+                box-shadow: #b7c6ec 0 0 20px; 
+                border-radius: 9px;
+                animation: slideIn 1s forwards;
+
+                .AnswerDetial{
+                    width: 574px;
+                    height: calc(100% - 54px);
+                    box-shadow: #729bff 0 0 0 4px inset;
+                    position: relative;
+                    &::after{
+                        position: absolute;
+                        content: '';
+                        width: 105%;
+                        height: 105%;
+                        top: 50%;
+                        left: 50%;
+                        transform: translateX(-50%) translateY(-50%);
+                        background:  var(--childbkg);
+                        background-size: 100% 100%;
+                        pointer-events: none;
+                    }
+
+                    .QuestionIndexBox{
+                        width: calc(100% - 40px);
+                        font-size: 24px;
+                        color: #906bda;
+                        margin: 20px;
+                    }
+                    .QuestionTitleBox{
+                        width: 100%;
+                        font-size: 46px;
+                        color: #7145c7;
+                        margin: 20px 0px;
+                    }
+                    .OptionGroup{
+                        width: 100%;
+
+                        .OptionButton{
+                            width: 497px;
+                            height: 68px;
+                            border-radius: 34px;
+                            margin: 10px auto;
+                            box-shadow: #917ab0 0 0 0 2px inset;
+                            font-size: 34px;
+                            color: #64589c;
+                            position: relative;
+                            overflow: hidden;
+                            &::after{
+                                transition: width 5s;
+                                width: 0%;
+                                height: 100%;
+                                background: #fcde2e;
+                                position: absolute;
+                                z-index: -1;
+                                top: 0px;
+                                left: 0px;
+                                content: '';
+                                animation: unselectedAnmi 0.3s forwards;
+                            }
+                        }
+
+                        .Selected{
+                            &::after{
+                                animation: selectedAnmi 0.5s forwards;
+                            }
+                        }
+                        @keyframes unselectedAnmi {
+                            0%{
+                                width: 100%;
+                            }
+                            100%{
+                                width: 0%;
+                            }
+                        }
+                        @keyframes selectedAnmi {
+                            0%{
+                                width: 0%;
+                            }
+                            100%{
+                                width: 100%;
+                            }
+                        }
+                    }
+                    .SubmitButton{
+                        width: 501px;
+                        height: 80px;
+                        background: #61589c;
+                        box-shadow: rgba($color: #fff, $alpha: 0.3) 0 10px 10px inset,rgba($color: #333, $alpha: 0.2) 0 -10px 10px inset;
+                        border-radius: 40px;
+                        margin: 0 auto;
+                        font-size: 45px;
+                        color: #fff;
+                    }
+                }
+            }
+            @keyframes slideIn {
+                0%{
+                    transform: translateY(100%) translateX(-50%);
+                }
+                100%{
+                    transform: translateY(0%) translateX(-50%);
+                }
+            }
+            .AnswerBot{
+                width: 100%;
+                position: absolute;
+                bottom: 0px;
+                filter: drop-shadow(#fff 0 0 5px);
+                pointer-events: none;
+                .BotCoin{
+                    width: 160px;
+                    position: absolute;
+                    left: 52%;
+                    bottom: 20px;
+                    transform: translateX(-50%);
+                    // margin-left: 50%;
+                    animation: scaleIn 0.5s forwards;
+                }
+                .botpng{
+                    width: 100%;
+                    display: block;
+                }
+            }
+        }
+
+    }
+}
+
+.BotGround{
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    z-index: 2;
+    img{
+        display: block;
+        width: 100%;
+    }
+}

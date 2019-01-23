@@ -18,7 +18,8 @@
     position: relative;
     z-index: 3;
     .MainTitle{
-        width: 634px;
+        width:100%;
+        margin-top: 80px;
         img{
             width: 100%;
             animation: scaleInTitle 0.5s forwards;
@@ -37,6 +38,45 @@
         height: calc(532px + 156px);
         overflow: hidden;
     }
+    .MaleAndFemale{
+        width: 750px;
+        height: 0px;
+        // position: absolute;
+        position: relative;
+        z-index: 3;
+        transform: translateY(70px);
+        pointer-events: none;
+        .HalfGroup{
+            width: 50%;
+        }
+        .female{
+            width: 104px;
+            margin-top: 60px;
+            margin-left: 45px;
+            animation: femaleIn 1s forwards;
+        }
+        .male{
+            width: 137px;
+            margin-right: 10px;
+            animation: maleIn 1s forwards;
+        }
+        @keyframes maleIn {
+            0%{
+                transform: rotate(45deg) translateX(100%);
+            }
+            100%{
+                transform: translateX(0%);
+            }
+        }
+        @keyframes femaleIn {
+            0%{
+                transform: rotate(-45deg) translateX(-100%);
+            }
+            100%{
+                transform: translateX(0%);
+            }
+        }
+    }
     .FormBox{
         width: 610px;
         height: 532px;
@@ -46,7 +86,7 @@
         background:linear-gradient(-45deg,
         rgba(103,79,150,1) 25%,#502f83 0,#502f83 50%,
         rgba(103,79,150,1) 0,rgba(103,79,150,1) 75%,#502f83 0);
-        background-size: 10px 10px;
+        background-size: 20px 20px;
         position: relative;
         .FormContent{
             width: 548px;
@@ -72,6 +112,7 @@
                 height: 555px;
                 box-shadow: #729bff 0 0 0 4px inset;
                 position: relative;
+                
                 .FormCoin{
                     width: 108px;
                     position: absolute;
@@ -86,8 +127,8 @@
                 &::after{
                    position: absolute;
                    content: '';
-                   width: 516px;
-                   height: 525px;
+                   width: 105%;
+                   height: 105%;
                    top: 50%;
                    left: 50%;
                    transform: translateX(-50%) translateY(-50%);

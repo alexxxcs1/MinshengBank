@@ -1,0 +1,101 @@
+.TipsBox{
+    width: 580px;
+    height: 471px;
+    background: #fff;
+    border-radius: 9px;
+    position: relative;
+    animation: scaleIn 0.5s forwards;
+    @keyframes  scaleIn {
+        0%{
+            transform: scale(0);
+        }
+        100%{
+            transform: scale(1);
+        }
+    }
+    
+    .firework{
+        width: 581px;
+        position: absolute;
+        top: 0px;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+    .TipsTitle{
+        width: 237px;
+        height: 70px;
+        background: #9704e4;
+        margin: 0 auto;
+        transform: translateY(-50%);
+        position: relative;
+        .TitleValue{
+            width: 100%;
+            height: 100%;
+            position: relative;
+            z-index: 1;
+            background: #9704e4;
+            font-size: 51px;
+            color: #fff;
+        }
+        &::after{
+            position: absolute;
+            content: '';
+            width:408px;
+            height: 54px;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            background:radial-gradient(circle at 0% 50%, transparent 40px, #c556ff 0) top left,radial-gradient(circle at 100% 50%, transparent 40px, #c556ff 0) top right;
+            background-size: calc(100% - 54px) 100%;
+            background-repeat: no-repeat;
+            z-index: 0;
+        }
+        
+    }
+    .ResultBox{
+        width: 100%;
+        span:nth-child(1){
+            font-size: 52px;
+            color: #9704e4;
+            font-weight: bold;
+            margin: 50px 0;
+        }
+        span:nth-child(2){
+            font-size: 32px;
+            color: #666666;
+            margin-bottom: 31px;
+        }
+    }
+    .NextButton{
+        width: 342px;
+        height: 96px;
+        border-radius:48px; 
+        margin:12px auto 48px auto;
+        background: #1879f0;
+        box-shadow: #ecb2ea 0 7px 20px;
+
+        font-size: 38px;
+        color: #fff;
+    }
+}
+
+.bgLight{
+    width: 750px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: -1;
+    animation: rotate 10s 0.2s infinite linear;
+    opacity: 0;
+}
+@keyframes rotate {
+    0%{
+        opacity: 1;
+        transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(-50%) translateY(-50%) rotate(360deg);
+    }
+}
