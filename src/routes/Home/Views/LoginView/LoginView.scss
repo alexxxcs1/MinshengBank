@@ -1,0 +1,229 @@
+.ViewBox{
+    width: 100%;
+    height: 100%;
+}
+
+.TopGround{
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    z-index: 0;
+    img{
+        display: block;
+        width: 100%;
+    }
+}
+
+.DetialBox{
+    position: relative;
+    z-index: 3;
+    .MainTitle{
+        width: 634px;
+        img{
+            width: 100%;
+            animation: scaleInTitle 0.5s forwards;
+        }
+    }
+    @keyframes scaleInTitle {
+        0%{
+            transform: scale(0);
+        }
+        100%{
+            transform: scale(1);
+        }
+    }
+    .FormOutBox{
+        width: 610px;
+        height: calc(532px + 156px);
+        overflow: hidden;
+    }
+    .FormBox{
+        width: 610px;
+        height: 532px;
+        border-radius: 9px;
+        margin-top: 156px;
+        background: #502f83;
+        background:linear-gradient(-45deg,
+        rgba(103,79,150,1) 25%,#502f83 0,#502f83 50%,
+        rgba(103,79,150,1) 0,rgba(103,79,150,1) 75%,#502f83 0);
+        background-size: 10px 10px;
+        position: relative;
+        .FormContent{
+            width: 548px;
+            height: 611px;
+            background: #fff;
+            position: absolute;
+            left: 50%;
+            bottom: 53px;
+            transform: translateX(-50%);
+            box-shadow: #b7c6ec 0 0 20px; 
+            border-radius: 9px;
+            animation: slideIn 1s forwards;
+            @keyframes slideIn {
+                0%{
+                    transform: translateY(100%) translateX(-50%);
+                }
+                100%{
+                    transform: translateY(0%) translateX(-50%);
+                }
+            }
+            .FormDetial{
+                width: 496px;
+                height: 555px;
+                box-shadow: #729bff 0 0 0 4px inset;
+                position: relative;
+                .FormCoin{
+                    width: 108px;
+                    position: absolute;
+                    top: 20px;
+                    right: 20px;
+                    transform:  translateX(50%) translateY(-50%);
+                    img{
+                        width: 100%;
+                        transform: scaleX(-1);
+                    }
+                }
+                &::after{
+                   position: absolute;
+                   content: '';
+                   width: 516px;
+                   height: 525px;
+                   top: 50%;
+                   left: 50%;
+                   transform: translateX(-50%) translateY(-50%);
+                   background:  var(--childbkg);
+                   background-size: 100% 100%;
+                   pointer-events: none;
+                }
+                .FormTips{
+                    width: 430px;
+                    height: 81px;
+                    margin: 15px 0px;
+                    margin-top: 30px;
+                    img{
+                        width: 100%;
+                    }
+                }
+                .InputGroup{
+                    width: 440px;
+                    .PhoneCode{
+                        width: 100%;
+                        margin: 15px 0;
+                        .CodeInput{
+                            width: calc(100% - 202px - 10px);
+                            height: 60px;
+                            box-shadow: #917ab0 0 0 0 2px;
+                            border-radius: 30px;
+                            input{
+                                display: block;
+                                width: 80%;
+                                height: 100%;
+                                background: transparent;
+                                outline: none;
+                                text-align: center;
+                                color: rgba($color: #61589c, $alpha: 1);
+                                &::placeholder{
+                                    color: rgba($color: #61589c, $alpha: 0.6);
+                                }
+                            }
+                        }
+                        .CodeButton{
+                            width: 202px;
+                            height: 60px;
+                            background: #61589c;
+                            box-shadow: rgba($color: #fff, $alpha: 0.3) 0 10px 10px inset,rgba($color: #333, $alpha: 0.2) 0 -10px 10px inset;
+                            border-radius: 30px;
+                            margin: 0 5px;
+                            color: #fff;
+                            font-size: 30px;
+                        }
+                    }
+                    .InputBox{
+                        margin: 15px 0;
+                        width: 100%;
+                        height: 60px;
+                        box-shadow: #917ab0 0 0 0 2px;
+                        border-radius: 30px;
+                        input{
+                            display: block;
+                            width: 80%;
+                            height: 100%;
+                            background: transparent;
+                            outline: none;
+                            text-align: center;
+                            color: rgba($color: #61589c, $alpha: 1);
+                            &::placeholder{
+                                color: rgba($color: #61589c, $alpha: 0.6);
+                            }
+                        }
+                    }
+                }
+
+                .FormButton{
+                    width: 439px;
+                    height: 70px;
+                    background: #61589c;
+                    box-shadow: rgba($color: #fff, $alpha: 0.3) 0 10px 10px inset,rgba($color: #333, $alpha: 0.2) 0 -10px 10px inset;
+                    border-radius: 35px;
+                    font-size: 40px;
+                    color: #fff;
+                    font-weight: bold;
+                }
+            }
+        }
+        .FormBot{
+            width: 100%;
+            position: absolute;
+            bottom: 0px;
+            filter: drop-shadow(#fff 0 0 5px);
+            pointer-events: none;
+            .BotCoin{
+                width: 160px;
+                position: absolute;
+                left: 50%;
+                bottom: 49px;
+                transform: translateX(-50%);
+                // margin-left: 50%;
+                animation: scaleIn 0.5s forwards;
+            }
+            @keyframes scaleIn {
+                0%{
+                    width: 0px;
+                }
+                100%{
+                    width: 160px;
+                }
+            }
+            .botpng{
+                width: 100%;
+                display: block;
+            }
+            .RuleText{
+                font-size: 23px;
+                width: 100%;
+                height: 43px;
+                position: absolute;
+                bottom: 0px;
+                color: #fff;
+
+                span{
+                    display: block;
+                    height: 90%;
+                    border-bottom: #fff solid 2px;
+                    pointer-events: all;
+                }
+            }
+        }
+    }
+}
+
+.BotGround{
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    z-index: 2;
+    img{
+        display: block;
+        width: 100%;
+    }
+}
