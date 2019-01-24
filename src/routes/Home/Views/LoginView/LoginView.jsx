@@ -14,16 +14,27 @@ import male from './imgs/male.png'
 import female from './imgs/female.png'
 
 import RuleComponent from './components/RuleComponent'
+import {api} from 'common/app'
   
+let cutdownTimer;
 export class LoginView extends Component {
 constructor(props) {
   super(props);
   this.state = {
     RuleShow:false,
+    cutdownTime:60,
+    formdata:{
+        tel:'',
+        code:'',
+        uid:'',
+    }
   };
      this.refreshProps = this.refreshProps.bind(this);
      this.HandleRule = this.HandleRule.bind(this);
      this.StartQuestion = this.StartQuestion.bind(this);
+     this.InputValueHandle = this.InputValueHandle.bind(this);
+     this.onInputBlur = this.onInputBlur.bind(this);
+     this.SendCode = this.SendCode.bind(this);
 }
 componentWillReceiveProps(nextprops) {
   this.refreshProps(nextprops);
@@ -34,12 +45,75 @@ componentDidMount() {
 refreshProps(props) {
   
 }
+componentWillUnmount(){
+    clearInterval(cutdownTimer);
+}
 HandleRule(boolean){
     this.state.RuleShow = boolean;
     this.setState(this.state);
 }
+onInputBlur() {
+    var scrollTop =
+      document.documentElement.scrollTop ||
+      window.pageYOffset ||
+      document.body.scrollTop;
+    document.documentElement.scrollTop = 0;
+    window.pageYOffset = 0;
+    document.body.scrollTop = 0;
+  }
+SendCode(){
+    this.state.cutdownTime = 59;
+    this.setState(this.state);
+    clearInterval(cutdownTimer);
+    if (this.state.formdata.tel) {
+        api.SendCode(this.state.formdata.tel).then(res=>{
+            if (res.code == 200) {
+                cutdownTimer = setInterval(() => {
+                    this.state.cutdownTime -= 1;
+                    this.setState(this.state);
+                    if (this.state.cutdownTime<=0) {
+                        this.state.cutdownTime = 60;
+                        this.setState(this.state);
+                        clearInterval(cutdownTimer);
+                    };
+                }, 1000);
+            }else{
+                this.state.cutdownTime = 60;
+                this.setState(this.state);
+                clearInterval(cutdownTimer);
+                alert(res.msg);
+            }
+        },err=>{
+
+        })
+    }else{
+        this.state.cutdownTime = 60;
+        this.setState(this.state);
+        clearInterval(cutdownTimer);
+        alert('手机号码不可为空！')
+    }
+}
 StartQuestion(){
-    this.context.HandleRoute(1);
+    if (this.state.formdata.tel&&this.state.formdata.code&&this.state.formdata.uid) {
+        api.UserLogin(this.state.formdata.tel,this.state.formdata.code,this.state.formdata.uid).then(res=>{
+            console.log(res);
+            if (res.code == 200) {
+                this.context.HandleRoute(1);
+            }else{
+                alert(res.msg)
+            }
+        },err=>{
+            console.log(err);
+            
+        })
+    }else{
+        alert('请填写完整的信息！');
+    }
+    
+}
+InputValueHandle(type,e){
+    this.state.formdata[type] = e.target.value;
+    this.setState(this.state);
 }
 render() {
   return (
@@ -72,16 +146,16 @@ render() {
                             <div className={style.FormTips}>
                                 <img src={formtips} alt=""/>
                             </div>
-                            <div className={style.InputGroup}>
+                            <div className={[style.InputGroup].join(' ')}>
                                 <div className={[style.InputBox,'childcenter'].join(' ')}>
-                                    <input type="text" placeholder='请输入手机号'/>
+                                    <input onBlur={this.onInputBlur} onChange={this.InputValueHandle.bind(this,'tel')} type="tel" type="number" placeholder='请输入手机号' value={this.state.formdata.tel}/>
                                 </div>
                                 <div className={[style.PhoneCode,'childcenter'].join(' ')}>
-                                    <div className={[style.CodeInput,'childcenter'].join(' ')}><input type="text" placeholder='请输验证码'/></div>
-                                    <div className={[style.CodeButton,'childcenter'].join(' ')}>获取验证码</div>
+                                    <div className={[style.CodeInput,'childcenter'].join(' ')}><input onBlur={this.onInputBlur} onChange={this.InputValueHandle.bind(this,'code')}  type="tel" type="number" placeholder='请输验证码' value={this.state.formdata.code}/></div>
+                                    <div className={[style.CodeButton,this.state.cutdownTime==60?'':style.Sended,'childcenter'].join(' ')} onClick={this.state.cutdownTime == 60?this.SendCode:()=>{}}>{this.state.cutdownTime==60?'获取验证码':this.state.cutdownTime + 's'}</div>
                                 </div>
                                 <div className={[style.InputBox,'childcenter'].join(' ')}>
-                                    <input type="text" placeholder='请输入身份证号'/>
+                                    <input onBlur={this.onInputBlur} onChange={this.InputValueHandle.bind(this,'uid')}  type="text" placeholder='请输入身份证号' value={this.state.formdata.uid}/>
                                 </div>
                             </div>
                             <div className={[style.FormButton,'childcenter'].join(' ')} onClick={this.StartQuestion}>开始答题</div>

@@ -42,6 +42,7 @@ NextQuestion(){
     if (this.state.userAnswer == 'A') {
         this.SuccessBoxHandle(true);
         this.setState(this.state);
+        
     }else{
         this.TipsBoxHandle(true);
         this.setState(this.state);
@@ -53,6 +54,9 @@ TipsBoxHandle(boolean){
 }
 SuccessBoxHandle(boolean){
     this.state.SuccessBoxShow = boolean;
+    if (!this.state.SuccessBoxShow) {
+        window.location.href = 'https://m1.cmbc.com.cn:8008/CMBC_MMServer/app/market/wap/wapDownload01.jsp';
+    }
     this.setState(this.state); 
 }
 render() {
@@ -79,14 +83,14 @@ render() {
                                 题目：2/2
                             </div>
                             <div className={[style.QuestionTitleBox,'childcenter'].join(' ')}>
-                                货币基金的特点是什么？
+                                薪盈宝快速赎回几日到帐
                             </div>
                             <div className={style.OptionGroup}>
-                                <div onClick={this.SelectOption.bind(this,'A')} className={[style.OptionButton,this.state.userAnswer == 'A'? style.Selected:'','childcenter'].join(' ')}>A、收益稳定</div>
-                                <div onClick={this.SelectOption.bind(this,'B')} className={[style.OptionButton,this.state.userAnswer == 'B'? style.Selected:'','childcenter'].join(' ')}>B、收益波动较大</div>
-                                <div onClick={this.SelectOption.bind(this,'C')} className={[style.OptionButton,this.state.userAnswer == 'C'? style.Selected:'','childcenter'].join(' ')}>C、收益较低 </div>
+                                <div onClick={this.SelectOption.bind(this,'A')} className={[style.OptionButton,this.state.userAnswer == 'A'? style.Selected:'','childcenter'].join(' ')}>A、当日</div>
+                                <div onClick={this.SelectOption.bind(this,'B')} className={[style.OptionButton,this.state.userAnswer == 'B'? style.Selected:'','childcenter'].join(' ')}>B、次日</div>
+                                <div onClick={this.SelectOption.bind(this,'C')} className={[style.OptionButton,this.state.userAnswer == 'C'? style.Selected:'','childcenter'].join(' ')}>C、第三日 </div>
                             </div>
-                            <div className={[style.SubmitButton,'childcenter'].join(' ')} onClick={this.NextQuestion}>选好了，下一题 </div>
+                            <div className={[style.SubmitButton,'childcenter'].join(' ')} onClick={this.NextQuestion}>选好了，提交</div>
                         </div>
                     </div>
                     <div className={style.AnswerBot}>
