@@ -8,6 +8,8 @@ import logo from 'assets/logo.png'
 
 import {api} from 'common/app'
 
+import ShareBox from 'components/ShareBox'
+
 export class Home extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +26,6 @@ export class Home extends Component {
   }
   isLogin(){
     api.isLogin().then(res=>{
-      console.log(res);
       if (res.code == 200) {
         this.HandleRoute(1);
       }else{
@@ -57,6 +58,7 @@ export class Home extends Component {
   render() {
     return (
       <div className={style.Box}>
+        <ShareBox />
         <img src={logo} className={style.logo} alt=""/>
         {this.customRouter()}
       </div>

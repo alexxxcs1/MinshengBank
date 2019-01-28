@@ -14,6 +14,12 @@ const AskPost = (ajaxinstance) => {
     customer.isLogin = () => {
         return ajaxinstance.post('Index/isCheckLogin');
     }  
+    customer.getShare = (url) => {
+        return ajaxinstance.post('Index/getWeChat',qs.stringify({
+            url
+        }));
+    }  
+    
     return customer
   }
   

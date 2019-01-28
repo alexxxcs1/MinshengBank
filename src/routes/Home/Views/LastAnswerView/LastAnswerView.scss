@@ -17,10 +17,17 @@
     position: relative;
     bottom: 0px;
     z-index: 3;
-    
-    .MainTitle{
-        width:80%;
+    .TitleCoinBox{
         margin-top: 80px;
+        width: 100%;
+        height: 0px;
+        .TitleCoin{
+            width: 60px;
+            margin-left: 200px;
+        }
+    }
+    .MainTitle{
+        width:100%;
         img{
             width: 100%;
             animation: scaleInTitle 0.5s forwards;

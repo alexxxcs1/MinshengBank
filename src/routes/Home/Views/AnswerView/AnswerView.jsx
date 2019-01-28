@@ -56,6 +56,9 @@ render() {
         </div>
 
         <div className={[style.DetialBox,'childcenter childcolumn'].join(' ')}>
+            <div className={[style.TitleCoinBox,'childcenter'].join(' ')}>
+                <img src={coin} className={style.TitleCoin} alt=""/>
+            </div>
             <div className={style.MainTitle}>
                 <img src={maintitle} alt=""/>
             </div>

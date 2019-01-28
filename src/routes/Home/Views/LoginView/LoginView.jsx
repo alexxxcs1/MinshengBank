@@ -94,6 +94,7 @@ SendCode(){
     }
 }
 StartQuestion(){
+    
     if (this.state.formdata.tel&&this.state.formdata.code&&this.state.formdata.uid) {
         api.UserLogin(this.state.formdata.tel,this.state.formdata.code,this.state.formdata.uid).then(res=>{
             console.log(res);
@@ -146,14 +147,16 @@ render() {
                             <div className={style.FormTips}>
                                 <img src={formtips} alt=""/>
                             </div>
-                            <div className={[style.InputGroup].join(' ')}>
+                            <div className={[style.InputGroup,'childcenter childcolumn'].join(' ')}>
                                 <div className={[style.InputBox,'childcenter'].join(' ')}>
                                     <input onBlur={this.onInputBlur} onChange={this.InputValueHandle.bind(this,'tel')} type="tel" type="number" placeholder='请输入手机号' value={this.state.formdata.tel}/>
                                 </div>
+                                {/* <div className={[style.flexBox,'childcenter'].join(' ')}></div> */}
                                 <div className={[style.PhoneCode,'childcenter'].join(' ')}>
                                     <div className={[style.CodeInput,'childcenter'].join(' ')}><input onBlur={this.onInputBlur} onChange={this.InputValueHandle.bind(this,'code')}  type="tel" type="number" placeholder='请输验证码' value={this.state.formdata.code}/></div>
                                     <div className={[style.CodeButton,this.state.cutdownTime==60?'':style.Sended,'childcenter'].join(' ')} onClick={this.state.cutdownTime == 60?this.SendCode:()=>{}}>{this.state.cutdownTime==60?'获取验证码':this.state.cutdownTime + 's'}</div>
                                 </div>
+                                {/* <div className={[style.flexBox,'childcenter'].join(' ')}></div> */}
                                 <div className={[style.InputBox,'childcenter'].join(' ')}>
                                     <input onBlur={this.onInputBlur} onChange={this.InputValueHandle.bind(this,'uid')}  type="text" placeholder='请输入身份证号' value={this.state.formdata.uid}/>
                                 </div>
