@@ -17,27 +17,29 @@
         z-index: 99;
         top: 30px;
         right: 30px;
-
-        &::after{
-            position: absolute;
-            content: '';
-            width: 10px;
-            height: 50px;
-            background: #000;
-            top: 50%;
-            left: 50%;
-            transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+        img{
+            width: 40px;
         }
-        &::before{
-            position: absolute;
-            content: '';
-            width: 10px;
-            height: 50px;
-            background: #000;
-            top: 50%;
-            left: 50%;
-            transform: translateX(-50%) translateY(-50%) rotate(45deg);
-        }
+        // &::after{
+        //     position: absolute;
+        //     content: '';
+        //     width: 10px;
+        //     height: 50px;
+        //     background: #000;
+        //     top: 50%;
+        //     left: 50%;
+        //     transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+        // }
+        // &::before{
+        //     position: absolute;
+        //     content: '';
+        //     width: 10px;
+        //     height: 50px;
+        //     background: #000;
+        //     top: 50%;
+        //     left: 50%;
+        //     transform: translateX(-50%) translateY(-50%) rotate(45deg);
+        // }
     }
     .ScrollBox{
         width: 100%;

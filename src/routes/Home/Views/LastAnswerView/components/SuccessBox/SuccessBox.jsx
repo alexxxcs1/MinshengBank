@@ -6,6 +6,8 @@ import firework from './imgs/firework.png'
 import bg from './imgs/bg.png'
 import longimage from 'assets/longimage.jpg'
 import buttonline from 'assets/buttonline.png'
+import returnback from 'assets/returnback.png'
+
     
 export class SuccessBox extends Component {
 constructor(props) {
@@ -34,7 +36,9 @@ render() {
     <DarkBox >
         {this.state.TipsShow?<div className={style.LongImageTips}>
             <div className={style.ScrollBox}>
-                <div className={style.CloseTipsButton} onClick={this.HandleTips.bind(this,false)}></div>
+                <div className={[style.CloseTipsButton,'childcenter'].join(' ')} onClick={this.HandleTips.bind(this,false)}>
+                    <img src={returnback} alt=""/>
+                </div>
                 <img src={longimage} className={style.tipsimgs} alt=""/>
                 <div className={[style.Button,'childcenter'].join(' ')} onClick={this.Close}>
                     <div className={style.ButtonLine}>
