@@ -1,3 +1,83 @@
+.LongImageTips{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    position: absolute;
+    z-index: 99;
+    top: 0px;
+    left: 0px;
+    // -webkit-overflow-scrolling: touch; 
+    z-index: 99;
+    pointer-events: all;
+    .CloseTipsButton{
+        width: 80px;
+        height: 80px;
+        // background: #000;
+        position: fixed;
+        z-index: 99;
+        top: 30px;
+        right: 30px;
+
+        &::after{
+            position: absolute;
+            content: '';
+            width: 10px;
+            height: 50px;
+            background: #000;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+        }
+        &::before{
+            position: absolute;
+            content: '';
+            width: 10px;
+            height: 50px;
+            background: #000;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%) rotate(45deg);
+        }
+    }
+    .ScrollBox{
+        width: 100%;
+        position: relative;
+        .tipsimgs{
+            width: 100%;
+            display: block;
+        }
+
+        .Button{
+            width: 342px;
+            height: 96px;
+            border-radius:48px; 
+            margin:12px auto 48px auto;
+            background: #1879f0;
+            box-shadow: #ecb2ea 0 7px 20px;
+
+            font-size: 38px;
+            color: #fff;
+            position: absolute;
+            bottom: 230px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            .ButtonLine{
+                position: absolute;
+                width: 74px;
+                top: 10px;
+                left: 30px;
+                transform: translateX(-100%) translateY(-100%);
+                img{
+                    display: block;
+                    width: 100%;
+                }
+            }
+
+        }
+    }
+    
+}
 .SuccessBox{
     width: 580px;
     height: 471px;

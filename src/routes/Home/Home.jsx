@@ -14,7 +14,7 @@ export class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      stageStatus:0,
+      stageStatus:2,
     };
     this.customRouter = this.customRouter.bind(this);
     this.HandleRoute = this.HandleRoute.bind(this);
