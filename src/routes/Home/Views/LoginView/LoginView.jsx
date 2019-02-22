@@ -84,7 +84,10 @@ SendCode(){
                 alert(res.msg);
             }
         },err=>{
-
+            this.state.cutdownTime = 60;
+            this.setState(this.state);
+            clearInterval(cutdownTimer);
+            alert('服务器错误！');
         })
     }else{
         this.state.cutdownTime = 60;
